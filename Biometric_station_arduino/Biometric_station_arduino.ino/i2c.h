@@ -1,4 +1,4 @@
-/*   XYZ
+
 
 //      This library provides the high-level functions needed to use the I2C
 //  serial interface supported by the hardware of several AVR processors.
@@ -97,8 +97,6 @@ unsigned char i2cMasterReceiveNI(unsigned char deviceAddr, unsigned char length,
  *********************/
 
 
-/* XYZ
-
 void i2cInit(void)
 {
   // set i2c bit rate to 40KHz
@@ -155,8 +153,7 @@ void i2cSendByte(unsigned char data)
   TWCR = (1<<TWINT)|(1<<TWEN);
 }
 
-void i2cReceiveByte(unsigned char ackFlag)
-{
+void i2cReceiveByte(unsigned char ackFlag){
   // begin receive over i2c
   if( ackFlag )
   {
@@ -195,4 +192,3 @@ void delay_ms(uint16_t x)
 }
 
 
-*/  // XYZ
