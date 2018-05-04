@@ -1,4 +1,8 @@
+//#include <LiquidCrystal.h>
+  #include <Wire.h>
 
+
+//LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
   float temperatureSent;
   int BPMSent;
@@ -46,7 +50,6 @@
 
 void setup() {
   Serial.begin(115200);
-  #include <Wire.h>
  
 
   #define PROCESSING_VISUALIZER 1
@@ -143,7 +146,7 @@ void loop() {
     Serial.println();
   }
   
-  delay(1000);  // Delay here for visibility
+  delay(200);  // Delay here for visibility
 
   float temperature;
 
@@ -155,7 +158,7 @@ void loop() {
 
   setTemperature(temperature);
 
-  delay(1000);
+  delay(200);
 
   serialOutput() ;
 
