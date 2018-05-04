@@ -18,6 +18,7 @@
   float x;
   float y;
   float z;
+  float checksum;
   
   const byte SCALE = 2;
   
@@ -156,7 +157,7 @@ setHeartbeat(BPM);
 
 //XYZ
 
-
+createChecksum();
 concatString();
 
 }
@@ -338,7 +339,11 @@ void setZAccelero(float zzz) {
 
 }
 
+void createChecksum(){
+  checksum = temperatureSent + BPMSent + x + y + z;
+}
+
 void concatString(){
-  Serial.println(String("ABCDE") + temperatureSent + String("|") + BPMSent + String("XXX") + x + String("YYY") + y + String("ZZZ") + z + String("EDCBA"));
+  Serial.println(String("ABCDE") + temperatureSent + String("|") + BPMSent + String("XXX") + x + String("YYY") + y + String("ZZZ") + z + String("CCC") + checksum +String("EDCBA"));
 }
 
