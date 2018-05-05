@@ -1,3 +1,4 @@
+  #include <LiquidCrystal.h>
   #include <Wire.h>
 
 
@@ -10,7 +11,7 @@
 
   #define GSCALE 2 // Sets full-scale range to +/-2, 4, or 8g. Used to calc real g values.
 
-
+  LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
   
   float temperatureSent;
@@ -56,7 +57,6 @@
  
 
 
-
 void setup() {
   Serial.begin(115200);
   
@@ -64,9 +64,9 @@ void setup() {
 
   initMMA8452(); 
 
-
-
   
+
+ 
 
   
 
@@ -98,7 +98,9 @@ void setup() {
   interruptSetup();   
 
 
-
+lcd.begin(16, 2);
+  // Print a message to the LCD.
+  
 
 }
 
@@ -159,6 +161,34 @@ setHeartbeat(BPM);
 
 createChecksum();
 concatString();
+
+lcd.setCursor(0,0);
+
+lcd.print(temperatureSent);
+lcd.print((char)223);
+lcd.print(String("C"));
+
+lcd.setCursor(8,0);
+
+
+lcd.print(BPMSent);
+
+lcd.setCursor(0,1);
+lcd.print(String("X: "));
+lcd.print(x);
+
+lcd.setCursor(9,1);
+lcd.print(String("Y: "));
+lcd.print(y);
+
+lcd.setCursor(11,0);
+lcd.print(String("Z:"));
+lcd.print(z);
+
+
+
+
+
 
 }
 
